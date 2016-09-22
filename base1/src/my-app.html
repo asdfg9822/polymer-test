@@ -61,6 +61,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app-toolbar {
         font-size: 18px;
       }
+
+      .drawer-list ::content a:hover{
+        color: #757575;
+      }
     </style>
 
     <app-location route="{{route}}"></app-location>
@@ -75,6 +79,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer>
         <app-toolbar>Registration and lifecycle</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="view0" href="/view0">0. Overview</a>
           <a name="view1" href="/view1">1. Create Custom Element</a>
           <a name="view2" href="/view2">2. Define a custom constructor</a>
           <a name="view3" href="/view3">3. Extend native HTML elements</a>
@@ -102,6 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="view404"
             role="main">
+          <my-view0 name="view0"></my-view0>
           <my-view1 name="view1"></my-view1>
           <my-view2 name="view2"></my-view2>
           <my-view3 name="view3"></my-view3>
