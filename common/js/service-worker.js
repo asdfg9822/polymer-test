@@ -7,11 +7,4 @@
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
-module.exports = {
-  staticFileGlobs: [
-    '/polymer-test/base1/index.html',
-    '/polymer-test/base1/manifest.json',
-    '/polymer-test/base1/bower_components/webcomponentsjs/webcomponents-lite.min.js'
-  ],
-  navigateFallback: '/index.html'
-};
+console.info('Service worker disabled for development, will be generated at build time.');

@@ -9,9 +9,9 @@
  */
 module.exports = {
   staticFileGlobs: [
-    '/polymer-test/base1/index.html',
-    '/polymer-test/base1/manifest.json',
-    '/polymer-test/base1/bower_components/webcomponentsjs/webcomponents-lite.min.js'
+    '/index.html',
+    '/manifest.json',
+    '/bower_components/webcomponentsjs/webcomponents-lite.min.js'
   ],
   navigateFallback: '/index.html'
 };
