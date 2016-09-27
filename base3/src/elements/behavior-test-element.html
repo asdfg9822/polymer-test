@@ -1,0 +1,35 @@
+<link rel="import" href="/polymer-test/bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/data-behavior.html">
+
+<dom-module id="behavior-test-element">
+    <style>
+        :host {
+            display: block;
+            padding: 30px;
+            @apply(--my-toolbar-theme);
+
+
+        }
+    </style>
+    <template>
+        <button on-click="_changeArray"><content id="contentId"></content></button>
+    </template>
+    <script>
+        Polymer({
+            is: "behavior-test-element",
+            behaviors: [dataBehavior],
+            dataChanged: function(newValue, oldValue) {
+                // How to call the dataChanged method from dataBehavior?
+                // this.super.dataChanged(); <- don't works!
+                console.log('custom stuff');
+            },
+            _changeArray: function () {
+                this.data = [];
+                this.data[0] = "bob";
+
+                console.log("behavior-test-element");
+                console.log(this.$.contentId.getDistributedNodes());
+            }
+        });
+    </script>
+</dom-module>

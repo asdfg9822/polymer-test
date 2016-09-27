@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    dataBehavior = {
+        properties: {
+            data: {
+                type: Array,
+                value: null,
+                observer: 'superDataChanged'
+            }
+        },
+        superDataChanged: function(newValue, oldValue) {
+            console.log('default stuff');
+            this.dataChanged(newValue, oldValue);
+        },
+        dataChanged: function (newValue, oldValue) {
+            // abstract
+        }
+    };
+</script>
