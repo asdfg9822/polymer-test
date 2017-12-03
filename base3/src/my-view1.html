@@ -1,0 +1,67 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="./elements/behavior-test-element.html">
+
+<dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        background-color: orange;
+        padding: 10px;
+        --my-toolbar-theme: {
+          background-color: green;
+        }
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">1</div>
+      <h1>this, this.$, this.root 차이</h1>
+      <p><behavior-test-element on-tap="changeTheme"><a id="test0">저는 커스텀 엘리먼트입니다.</a></behavior-test-element></p>
+      <ul>
+        <li>console.log(this) 호출 : my-view1이 호출되었음</li>
+        <li>console.log(this.root) 호출 : shadow tree의 root가 호출되었음 </li>
+        <li>console.log(this.$.id) 호출 : id를 이용한 DOM 탐색, LOCAL DOM만 가능 한듯</li>
+        <li id ="test1">this.$.id를 이용한 호출은 해당 해당 DOM Tree에서만 되었음</li>
+        <li id ="test2">this.$$(selector)를 이용한 호출은 Polymer.dom(this.root).querySelector(selector)의 간소형이다.</li>
+        <li>Custom Element에서 밖에서 작성될 Content(Light DOM)에 접근하기 위해서는 Custom Element 내부에서 content 태그에 id를 주고 this.$.id.getDistributedNodes()를 호출하면 된다. </li>
+      </ul>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view1',
+
+      ready: function() {
+        console.log(this);
+        console.log(this.root);
+        console.log(this.$.test1);
+        console.log(this.$.test2);
+        var testVar = Polymer.dom(this.root).querySelector("#test2");
+        console.log(testVar == this.$.test2);
+        console.log(testVar == this.$$("#test2"));
+        var testVar2 = Polymer.dom(this.root).querySelector(".circle");
+        console.log(testVar2 == this.$$(".circle"));
+        console.log("------------");
+      },
+
+      changeTheme: function() {
+        this.customStyle['--my-toolbar-theme'] = '{background-color: red;}';
+        this.updateStyles();
+      }
+    });
+  </script>
+</dom-module>
