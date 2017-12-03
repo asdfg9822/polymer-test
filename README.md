@@ -9,6 +9,8 @@ Polymer project Test
 * npm link를 이용한 방식
 * npm local module을 이용한 방식 (^2.0)
 
+```javascript
 "dependencies": {
     "bar": "file:../foo/bar"
 }
+```
